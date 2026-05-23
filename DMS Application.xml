@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="vertical"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="4"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Data Management System">
+			<and abstract="true" mandatory="true" name="Data">
+				<and name="Mobility">
+					<feature mandatory="true" name="Batch"/>
+					<feature name="Stream"/>
+				</and>
+				<and abstract="true" mandatory="true" name="Data Structure">
+					<and mandatory="true" name="Structured">
+						<feature mandatory="true" name="Quantitative Data"/>
+						<feature mandatory="true" name="CSV"/>
+					</and>
+					<and name="Semi Structured">
+						<feature name="JSON"/>
+					</and>
+					<and mandatory="true" name="Unstructured">
+						<feature mandatory="true" name="Imagery Data"/>
+						<feature name="Video Capture"/>
+					</and>
+				</and>
+				<and name="Data Aggregation">
+					<feature mandatory="true" name="Data Fusion"/>
+					<feature mandatory="true" name="Incremental Data Ingestion"/>
+					<feature mandatory="true" name="Integration"/>
+				</and>
+			</and>
+			<and abstract="true" mandatory="true" name="Data Acquisition">
+				<and abstract="true" mandatory="true" name="Sensing And Hardware">
+					<and mandatory="true" name="Ground Sensing IoT Sensor">
+						<feature mandatory="true" name="Moisture Sensor"/>
+						<feature mandatory="true" name="Environmental Sensor"/>
+						<feature mandatory="true" name="pH Sensor"/>
+						<feature name="Rain Sensor"/>
+						<feature name="Gas Sensor"/>
+					</and>
+					<and mandatory="true" name="Remote Sensing">
+						<feature mandatory="true" name="Satellite"/>
+						<feature name="Aerial UAV"/>
+					</and>
+					<or mandatory="true" name="Camera">
+						<feature mandatory="true" name="RGB Camera"/>
+						<feature name="Multispectral Camera"/>
+					</or>
+					<and abstract="true" mandatory="true" name="Spatial Technologies">
+						<feature mandatory="true" name="GPS"/>
+					</and>
+					<feature mandatory="true" name="Weather Station"/>
+					<feature mandatory="true" name="PC"/>
+					<feature name="Microcontroller"/>
+					<feature name="PCB"/>
+				</and>
+				<and name="Smart Machinery">
+					<feature name="UAV Drone"/>
+					<feature name="Autonomous Tractors"/>
+				</and>
+				<and abstract="true" mandatory="true" name="Data Transfer Communication">
+					<and name="Wireless Sensor Network">
+						<feature name="LoRaWAN"/>
+						<feature name="ZigBee"/>
+					</and>
+					<feature mandatory="true" name="WiFi"/>
+					<feature mandatory="true" name="Cellular"/>
+					<or abstract="true" name="Application Protocols">
+						<feature mandatory="true" name="HTTPS"/>
+						<feature name="MQTT"/>
+					</or>
+				</and>
+				<and abstract="true" name="Data Loading And Logging">
+					<feature mandatory="true" name="Data Ingestion Manual Entry"/>
+					<and name="Uploading Mechanism">
+						<feature mandatory="true" name="Batch Uploading"/>
+						<feature name="Stream Uploading"/>
+					</and>
+					<and name="Target Storage">
+						<feature mandatory="true" name="Cloud Database Uploading"/>
+					</and>
+					<and name="Log Types">
+						<feature mandatory="true" name="Tamper Proof Logs"/>
+						<feature name="Automated Field Operation Logs"/>
+					</and>
+					<and name="Logged Parameters">
+						<feature mandatory="true" name="Timestamp"/>
+						<feature mandatory="true" name="GPS Coordinates"/>
+					</and>
+				</and>
+			</and>
+			<and abstract="true" mandatory="true" name="Data Storage">
+				<or abstract="true" mandatory="true" name="Computing Infrastructure">
+					<feature mandatory="true" name="Cloud Computing"/>
+				</or>
+				<and abstract="true" mandatory="true" name="Database Systems">
+					<feature mandatory="true" name="SQL Relational Database"/>
+				</and>
+			</and>
+			<and abstract="true" mandatory="true" name="Data Processing">
+				<and abstract="true" mandatory="true" name="Data Preprocessing And Preparation">
+					<and mandatory="true" name="Data Cleansing">
+						<feature mandatory="true" name="Normalization"/>
+						<feature mandatory="true" name="Imputation"/>
+					</and>
+					<feature name="Feature Engineering"/>
+					<and name="Data Splitting">
+						<feature mandatory="true" name="Train"/>
+						<feature mandatory="true" name="Test"/>
+					</and>
+				</and>
+				<and abstract="true" name="Image Processing">
+					<and name="Photogrammetry">
+						<feature mandatory="true" name="Orthophoto"/>
+					</and>
+					<and mandatory="true" name="Image Analysis">
+						<feature mandatory="true" name="Object Based Analysis"/>
+						<feature mandatory="true" name="Pixel Based Analysis"/>
+					</and>
+					<feature name="Multispectral Analysis"/>
+				</and>
+				<and abstract="true" mandatory="true" name="Data Analytics Method">
+					<or abstract="true" mandatory="true" name="Machine Learning">
+						<feature name="Random Forest"/>
+						<feature name="SVM"/>
+						<feature name="XGBoost"/>
+					</or>
+					<and name="Statistical And Math Model">
+						<feature mandatory="true" name="Spatial Analysis"/>
+						<feature mandatory="true" name="Geospatial Analysis"/>
+					</and>
+					<and name="Expert System">
+						<feature mandatory="true" name="Fuzzy Logic"/>
+						<feature mandatory="true" name="Forward Chaining"/>
+					</and>
+				</and>
+			</and>
+			<and abstract="true" mandatory="true" name="Data Visualization">
+				<and name="Temporal Visualization">
+					<feature mandatory="true" name="Line Graph"/>
+					<feature mandatory="true" name="Seasonal Comparison Historical Timeline"/>
+				</and>
+				<and name="Multidimensional Visualization">
+					<feature mandatory="true" name="Bar Graph"/>
+					<feature mandatory="true" name="Comparison Chart"/>
+				</and>
+				<and mandatory="true" name="Geospatial Visualization">
+					<feature mandatory="true" name="Yield Maps"/>
+					<feature mandatory="true" name="NDVI Map"/>
+					<feature name="Soil Maps"/>
+				</and>
+			</and>
+			<and abstract="true" mandatory="true" name="Data Monitoring And Reporting">
+				<and abstract="true" mandatory="true" name="User Interface">
+					<feature mandatory="true" name="Mobile Application"/>
+					<feature name="Web Application"/>
+				</and>
+				<feature mandatory="true" name="Dashboard"/>
+				<and mandatory="true" name="Real Time Monitoring">
+				</and>
+				<feature mandatory="true" name="Decision Support System DSS"/>
+				<and name="Alert System">
+					<feature mandatory="true" name="Automated Alerts"/>
+				</and>
+			</and>
+			<and abstract="true" name="Data Security">
+				<and abstract="true" mandatory="true" name="Authorization And Authentication">
+					<feature mandatory="true" name="Digital Signature"/>
+				</and>
+				<and abstract="true" mandatory="true" name="Encryption Security Mechanisms">
+					<feature mandatory="true" name="Cryptography Encryption"/>
+				</and>
+			</and>
+		</and>
+	</struct>
+</featureModel>
