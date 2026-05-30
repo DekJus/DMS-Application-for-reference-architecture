@@ -12,262 +12,161 @@
 	</properties>
 	<struct>
 		<and abstract="true" mandatory="true" name="Data Management System">
-
-			<!-- ═══════════════════════════════════════════════════════════════
-			     DATA
-			     Sources: Q37, Q39, Q40, BPM spreadsheet/drive usage (6/6)
-			     ═══════════════════════════════════════════════════════════════ -->
 			<and abstract="true" mandatory="true" name="Data">
 				<and name="Mobility">
-					<!-- Batch: 6/6 – all use end-of-day batch upload to spreadsheet/drive -->
 					<feature mandatory="true" name="Batch"/>
-					<!-- Stream: 2/6 – only Kak P requests real-time; optional -->
 					<feature name="Stream"/>
 				</and>
 				<and abstract="true" mandatory="true" name="Data Structure">
 					<and mandatory="true" name="Structured">
-						<!-- Quantitative Data: 6/6 – all use numeric spreadsheet records -->
 						<feature mandatory="true" name="Quantitative Data"/>
-						<!-- CSV: 6/6 – all export/use spreadsheet/CSV files -->
 						<feature mandatory="true" name="CSV"/>
 					</and>
-					<!-- Semi Structured: not explicitly mentioned by any respondent – omitted -->
 					<and mandatory="true" name="Unstructured">
-						<!-- Imagery Data: 5/6 – Kak M, Kak D, Kak A, Kak P, Kak W all mention photos/drone images -->
 						<feature mandatory="true" name="Imagery Data"/>
-						<!-- Video Capture: 2/6 – Kak D and Kak P mention video; optional -->
 						<feature name="Video Capture"/>
 					</and>
 				</and>
 				<and name="Data Aggregation">
-					<!-- Data Fusion: 5/6 – Kak P, Kak D, Kak W, Kak M, Sir T say they combine multiple data sources (Q39) -->
 					<feature mandatory="true" name="Data Fusion"/>
-					<!-- Incremental Data Ingestion: 4/6 – batch-based incremental uploads across sessions -->
 					<feature mandatory="true" name="Incremental Data Ingestion"/>
-					<!-- Integration: 5/6 – Kak P, Kak D, Kak W, Kak M, Sir T confirm multi-source integration -->
 					<feature mandatory="true" name="Integration"/>
 				</and>
 			</and>
-
-			<!-- ═══════════════════════════════════════════════════════════════
-			     DATA ACQUISITION
-			     Sources: Q31, Q34, Q35, Q36, Q42, BPM field tools
-			     ═══════════════════════════════════════════════════════════════ -->
 			<and abstract="true" mandatory="true" name="Data Acquisition">
 				<and abstract="true" mandatory="true" name="Sensing And Hardware">
 					<and mandatory="true" name="Ground Sensing IoT Sensor">
-						<!-- Moisture Sensor: 5/6 – Kak M, Kak D, Kak A, Kak P, Kak W select soil moisture (Q31) -->
 						<feature mandatory="true" name="Moisture Sensor"/>
-						<!-- Environmental Sensor: 5/6 – all mention temperature/humidity/rainfall needs (Q31, Q33) -->
 						<feature mandatory="true" name="Environmental Sensor"/>
-						<!-- Rain Sensor: 4/6 – Kak D, Kak P, Kak W, Kak M mention rainfall tracking (Q31, Q34) -->
 						<feature mandatory="true" name="Rain Sensor"/>
-						<!-- pH Sensor: 5/6 – Kak M, Kak D, Kak A, Kak P, Sir T collect soil pH (Q31, Q33 follow-up) -->
 						<feature mandatory="true" name="pH Sensor"/>
-						<!-- Nutrient Sensor: 4/6 – Kak M, Kak D, Kak P, Sir T collect NPK/nutrient data (Q31) -->
 						<feature mandatory="true" name="Nutrient Sensor"/>
-						<!-- Gas Sensor: 2/6 – Kak P and Kak D only; optional -->
 						<feature name="Gas Sensor"/>
 					</and>
 					<and mandatory="true" name="Remote Sensing">
-						<!-- Satellite: 4/6 – Kak P, Kak D, Kak W, Kak M select satellite imagery (Q34) -->
 						<feature mandatory="true" name="Satellite"/>
-						<!-- Aerial UAV: 4/6 – Kak P, Kak D, Kak W, Kak M select drones for aerial monitoring (Q35) -->
 						<feature mandatory="true" name="Aerial UAV"/>
 					</and>
 					<or mandatory="true" name="Camera">
-						<!-- RGB Camera: 4/6 – Kak P, Kak D (mobile cam), Kak W, Kak M use/plan cameras (Q34) -->
-						<feature mandatory="true" name="RGB Camera"/>
-						<!-- Multispectral Camera: 2/6 – Kak P and Kak W only; optional -->
+						<feature name="RGB Camera"/>
 						<feature name="Multispectral Camera"/>
 					</or>
 					<and abstract="true" mandatory="true" name="Spatial Technologies">
-						<!-- GPS: 4/6 – Kak P, Kak A, Kak W, Kak M select GPS tools (Q34) -->
 						<feature mandatory="true" name="GPS"/>
-						<!-- GIS: not explicitly mentioned by respondents – omitted -->
 					</and>
-					<!-- Weather Station: 4/6 – Kak W explicitly selects; all rely on weather data in BPM decisions -->
 					<feature mandatory="true" name="Weather Station"/>
-					<!-- PC: 4/6 – Kak A, Kak D, Kak W, Sir T use desktop/laptop (Q36) -->
 					<feature mandatory="true" name="PC"/>
-					<!-- Microcontroller: 2/6 – Kak D, Kak W mention sensor modules (Q36); optional -->
 					<feature name="Microcontroller"/>
 				</and>
 				<and name="Smart Machinery">
-					<!-- UAV Drone: 4/6 – Kak P, Kak D, Kak W, Kak M select drones for aerial monitoring (Q35) -->
 					<feature mandatory="true" name="UAV Drone"/>
-					<!-- Autonomous Tractors: 3/6 – Kak P, Kak D, Kak M (notulensi); optional -->
 					<feature name="Autonomous Tractors"/>
 				</and>
 				<and abstract="true" mandatory="true" name="Data Transfer Communication">
 					<and name="Wireless Sensor Network">
-						<!-- LoRaWAN/ZigBee: not explicitly chosen by respondents; included as optional based on DMS design -->
 						<feature name="LoRaWAN"/>
 						<feature name="ZigBee"/>
 					</and>
-					<!-- WiFi: 5/6 – Kak P, Kak D, Kak A, Kak W, Kak M select WiFi as data transfer (Q42) -->
 					<feature mandatory="true" name="WiFi"/>
-					<!-- Cellular: 4/6 – Kak D, Kak A, Kak W, Kak M select mobile internet (Q42) -->
 					<feature mandatory="true" name="Cellular"/>
 					<or abstract="true" name="Application Protocols">
-						<!-- HTTPS: 5/6 – all use cloud platforms requiring HTTPS; implied by cloud usage (Q41, Q42) -->
-						<feature mandatory="true" name="HTTPS"/>
-						<!-- MQTT: 2/6 – not strongly mentioned by respondents; optional -->
+						<feature name="HTTPS"/>
 						<feature name="MQTT"/>
 					</or>
 				</and>
 				<and abstract="true" name="Data Loading And Logging">
-					<!-- Data Ingestion Manual Entry: 6/6 – all manually enter data via phone/tablet (Q56) -->
 					<feature mandatory="true" name="Data Ingestion Manual Entry"/>
 					<and name="Uploading Mechanism">
-						<!-- Batch Uploading: 6/6 – all use batch/end-of-day upload approach (Q40, Q56) -->
 						<feature mandatory="true" name="Batch Uploading"/>
 					</and>
 					<and name="Target Storage">
-						<!-- Cloud Database Uploading: 6/6 – all store to Google Drive / cloud platform (Q41) -->
 						<feature mandatory="true" name="Cloud Database Uploading"/>
 					</and>
 					<and name="Log Types">
-						<!-- Tamper Proof Logs: 5/6 – Kak P, Kak D, Kak A, Kak W say "very important" for tamper-resistance (Q58) -->
 						<feature mandatory="true" name="Tamper Proof Logs"/>
-						<!-- Automated Field Operation Logs: 4/6 – Kak P, Kak A, Kak W, Kak M record field operation events (Q57) -->
 						<feature mandatory="true" name="Automated Field Operation Logs"/>
 					</and>
 					<and name="Logged Parameters">
-						<!-- Timestamp: 6/6 – all record dates/time with field entries (Q57) -->
 						<feature mandatory="true" name="Timestamp"/>
-						<!-- GPS Coordinates: 4/6 – Kak A, Kak W, Kak M record location per event; location data important (Q57, Q31) -->
 						<feature mandatory="true" name="GPS Coordinates"/>
 					</and>
 				</and>
 			</and>
-
-			<!-- ═══════════════════════════════════════════════════════════════
-			     DATA STORAGE
-			     Sources: Q41, Q52, Q53
-			     ═══════════════════════════════════════════════════════════════ -->
 			<and abstract="true" mandatory="true" name="Data Storage">
 				<and abstract="true" mandatory="true" name="Database Systems">
-					<!-- SQL Relational Database: 6/6 – all use structured tables/spreadsheets aligned with relational model (Q52, Q53) -->
 					<feature mandatory="true" name="SQL Relational Database"/>
-					<!-- Data Lake: 1/6 – Kak M (Marthana) mentions "large archive where all raw data is stored together" (Q52) -->
 					<feature name="Data Lake"/>
 				</and>
 			</and>
-
-			<!-- ═══════════════════════════════════════════════════════════════
-			     DATA PROCESSING
-			     Sources: Q43, Q44, Q59, Q60, Q61, notulensi DSS requests
-			     ═══════════════════════════════════════════════════════════════ -->
 			<and abstract="true" mandatory="true" name="Data Processing">
 				<and abstract="true" mandatory="true" name="Data Preprocessing And Preparation">
 					<and mandatory="true" name="Data Cleansing">
-						<!-- Normalization: 5/6 – Kak P, Kak D, Kak A, Kak W, Sir T manually check/clean data before use (Q59) -->
 						<feature mandatory="true" name="Normalization"/>
-						<!-- Imputation: 5/6 – all experience inconsistent/missing data issues requiring correction (Q60) -->
 						<feature mandatory="true" name="Imputation"/>
 					</and>
 					<and name="Data Splitting">
-						<!-- Train/Test: implied by ML requirements but not explicitly stated; optional -->
 						<feature name="Train"/>
 						<feature name="Test"/>
 					</and>
 				</and>
 				<and abstract="true" name="Image Processing">
 					<and mandatory="true" name="Image Analysis">
-						<!-- Object Based & Pixel Based: 4/6 – Kak P wants automated disease/weed detection; Kak A, Kak W use field maps (Q61) -->
 						<feature mandatory="true" name="Object Based Analysis"/>
 						<feature mandatory="true" name="Pixel Based Analysis"/>
 					</and>
 				</and>
 				<and abstract="true" mandatory="true" name="Data Analytics Method">
 					<or abstract="true" mandatory="true" name="Machine Learning">
-						<!-- Random Forest / SVM / XGBoost: not explicitly selected by any respondent; included as optional -->
 						<feature name="Random Forest"/>
 						<feature name="SVM"/>
 						<feature name="XGBoost"/>
 					</or>
 					<and name="Statistical And Math Model">
-						<!-- Spatial Analysis: 4/6 – Kak P, Kak A, Kak W, Kak M want color-coded field maps requiring spatial analysis (Q50, Q61) -->
 						<feature mandatory="true" name="Spatial Analysis"/>
-						<!-- Geospatial Analysis: 4/6 – Kak P, Kak A, Kak W, Kak M use GPS + satellite + field maps (Q31, Q34, Q61) -->
 						<feature mandatory="true" name="Geospatial Analysis"/>
 					</and>
 					<and name="Expert System">
-						<!-- Fuzzy Logic: mentioned in Kak M notulensi DSS; supports crop decision rules -->
 						<feature mandatory="true" name="Fuzzy Logic"/>
-						<!-- Forward Chaining: supports rule-based DSS for pest/disease alerts; 4/6 request DSS support (Q44) -->
 						<feature mandatory="true" name="Forward Chaining"/>
 					</and>
 				</and>
 			</and>
-
-			<!-- ═══════════════════════════════════════════════════════════════
-			     DATA VISUALIZATION
-			     Sources: Q49, Q50, Q55
-			     ═══════════════════════════════════════════════════════════════ -->
 			<and abstract="true" mandatory="true" name="Data Visualization">
 				<and name="Temporal Visualization">
-					<!-- Line Graph: 4/6 – Kak P, Kak D, Kak A, Sir T select "charts showing changes over time" (Q50) -->
 					<feature mandatory="true" name="Line Graph"/>
-					<!-- Seasonal Comparison Historical Timeline: 5/6 – Kak D, Kak A, Kak P, Kak W, Kak M select seasonal comparison (Q50) -->
-					<feature mandatory="true" name="Seasonal Comparison Historical Timeline"/>
+					<feature mandatory="true" name="Timeline"/>
+					<feature mandatory="true" name="Scatter Plot"/>
 				</and>
 				<and name="Multidimensional Visualization">
-					<!-- Bar Graph: 4/6 – all requesting charts/graphs; bar graph is standard for multi-field comparison (Q50) -->
 					<feature mandatory="true" name="Bar Graph"/>
-					<!-- Comparison Chart: 4/6 – Kak D, Kak A, Sir T, Kak W select "comparison chart across fields" (Q50) -->
 					<feature mandatory="true" name="Comparison Chart"/>
 				</and>
 				<and mandatory="true" name="Geospatial Visualization">
-					<!-- Yield Maps: 5/6 – Kak D, Kak W select "map showing healthy vs stressed areas"; all track yield (Q50, Q55) -->
 					<feature mandatory="true" name="Yield Maps"/>
-					<!-- NDVI Map: 4/6 – Kak D, Sir T, Kak W, Kak M select "colour-coded field map / vegetation health" (Q50) -->
 					<feature mandatory="true" name="NDVI Map"/>
-					<!-- Soil Maps: 3/6 – Kak A and Kak M mention soil condition data; optional -->
 					<feature name="Soil Maps"/>
 				</and>
 			</and>
-
-			<!-- ═══════════════════════════════════════════════════════════════
-			     DATA MONITORING AND REPORTING
-			     Sources: Q47, Q48, Q49, Q50, Q51, Q44, Q26
-			     ═══════════════════════════════════════════════════════════════ -->
 			<and abstract="true" mandatory="true" name="Data Monitoring And Reporting">
 				<and abstract="true" mandatory="true" name="User Interface">
-					<!-- Mobile Application: Q48 all 6 say mobile is "very important" or "important"; 3/6 primary access via mobile (Q47) -->
 					<feature mandatory="true" name="Mobile Application"/>
-					<!-- Web Application: 3/6 primary access via web browser (Kak D, Sir T, Kak M) (Q47); optional -->
 					<feature name="Web Application"/>
 				</and>
-				<!-- Dashboard: 6/6 – all want visual output for daily decisions; Kak P explicitly requests live dashboard (notulensi, Q49) -->
 				<feature mandatory="true" name="Dashboard"/>
-				<and mandatory="true" name="Real Time Monitoring">
-					<!-- Real-time access wanted by Kak P immediately; others end of day – feature retained as mandatory from DMS design -->
-				</and>
-				<!-- Decision Support System DSS: 5/6 – all select DSS-type decisions in Q44; Sir T selects predictive tool (Q43) -->
+				<feature mandatory="true" name="Real Time Monitoring"/>
 				<feature mandatory="true" name="Decision Support System DSS"/>
 				<and name="Alert System">
-					<!-- Automated Alerts: 5/6 – all select "early warning about pest/disease" in Q26; Sir T selects automatic alert (Q50) -->
 					<feature mandatory="true" name="Automated Alerts"/>
 				</and>
 			</and>
-
-			<!-- ═══════════════════════════════════════════════════════════════
-			     DATA SECURITY
-			     Sources: Q62, Q63
-			     ═══════════════════════════════════════════════════════════════ -->
 			<and abstract="true" name="Data Security">
 				<and abstract="true" mandatory="true" name="Authorization And Authentication">
-					<!-- Digital Signature / Login Controls: 5/6 – Kak P, Kak D, Kak W, Kak M, Sir T mention passwords/login (Q63) -->
 					<feature mandatory="true" name="Digital Signature"/>
 				</and>
 				<and abstract="true" mandatory="true" name="Encryption Security Mechanisms">
-					<!-- Cryptography Encryption: 5/6 – Kak P, Kak D, Kak W, Kak M, Sir T say data on secure platform (Q63) -->
 					<feature mandatory="true" name="Cryptography Encryption"/>
 				</and>
 			</and>
-
 		</and>
 	</struct>
 </featureModel>
