@@ -136,6 +136,7 @@
 					<feature mandatory="true" name="Line Graph"/>
 					<feature mandatory="true" name="Timeline"/>
 					<feature mandatory="true" name="Scatter Plot"/>
+					<feature mandatory="true" name="Temporal Trend Graph"/>
 				</and>
 				<and name="Multidimensional Visualization">
 					<feature mandatory="true" name="Bar Graph"/>
