@@ -140,7 +140,7 @@
 				</and>
 				<and name="Multidimensional Visualization">
 					<feature mandatory="true" name="Bar Graph"/>
-					<feature mandatory="true" name="Comparison Chart"/>
+					<feature mandatory="true" name="Histogram"/>
 				</and>
 				<and mandatory="true" name="Geospatial Visualization">
 					<feature mandatory="true" name="Yield Maps"/>
